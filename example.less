@@ -21,6 +21,7 @@ header {
 }
 article {
 	.row;
+
 	margin-top: 10px;
 	
 	section {
@@ -41,6 +42,18 @@ article {
 
 		}
 	}
+	
+	&.box-sizing {
+	   section {
+	       ul {
+	           li {
+    	           padding: 10px;
+    	           border: 6px solid #ccc;
+    	       }
+    	   }
+	   }
+	}
+	
 	aside {
 		.grid(4);
 		background-color: #e9e9e9;

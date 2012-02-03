@@ -2,14 +2,12 @@ body {
   padding: 0 1.0416666666666665%;
   margin: 0;
 }
+/* !Modified - added the gutter param so that you can override this mixin and specify a gutter for each set of columns. Also added padding param so you can factor for columns with padding */
 #container {
   max-width: 1300px;
   margin: 0 auto;
 }
 header {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   display: block;
   overflow: hidden;
   margin: 0 auto;
@@ -19,9 +17,12 @@ header {
   background-color: black;
 }
 header h1 {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  /*
+-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+*/
+
   display: block;
   overflow: hidden;
   float: left;
@@ -31,9 +32,6 @@ header h1 {
   color: white;
 }
 article {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   display: block;
   overflow: hidden;
   margin: 0 auto;
@@ -43,9 +41,12 @@ article {
   margin-top: 10px;
 }
 article section {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  /*
+-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+*/
+
   display: block;
   overflow: hidden;
   float: left;
@@ -53,9 +54,6 @@ article section {
   margin: 0 1.0416666666666665%;
 }
 article section ul.boxes {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   display: block;
   overflow: hidden;
   margin: 0 auto;
@@ -65,9 +63,12 @@ article section ul.boxes {
   padding: 0;
 }
 article section ul.boxes li {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  /*
+-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+*/
+
   display: block;
   overflow: hidden;
   float: left;
@@ -75,17 +76,16 @@ article section ul.boxes li {
   margin: 0 1.5625%;
   list-style: none outside none;
   text-align: center;
-  padding: 1em 0;
+  padding: 10px 0;
   background-color: #e9e9e9;
 }
-article.box-sizing section ul li {
-  padding: 10px;
-  border: 6px solid #ccc;
-}
 article aside {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  /*
+-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+*/
+
   display: block;
   overflow: hidden;
   float: left;
@@ -94,9 +94,6 @@ article aside {
   background-color: #e9e9e9;
 }
 footer {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   display: block;
   overflow: hidden;
   margin: 0 auto;
@@ -106,9 +103,12 @@ footer {
   margin-top: 20px;
 }
 footer div {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  /*
+-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+*/
+
   display: block;
   overflow: hidden;
   float: left;

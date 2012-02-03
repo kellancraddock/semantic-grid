@@ -2,7 +2,24 @@ body {
   padding: 0 1.0416666666666665%;
   margin: 0;
 }
-/* !Modified - added the gutter param so that you can override this mixin and specify a gutter for each set of columns. Also added padding param so you can factor for columns with padding */
+/**
+* ROW
+* @columns {int} number of columns in the grid
+* @gutter {int} percentage width of gutters
+* 
+* Now factoring for optional gutter width. Browsers that dont support the box-sizing rule (<=IE7) will need to account for gutters on grid items. The gutter needs to be offset in the row mixin
+*/
+/**
+* COLUMN
+* @x {int} number of columns each grid item should take up
+* @columns {int} number of columns in the grid
+* @gutter {int} percentage width of gutters
+* @padding {int} percentage width of left and right padding on grid items
+*
+* Now factoring for optional gutter width and padding. Browsers that dont support the box-sizing rule (<=IE7) will need to account for padding and gutters on grid items. Both padding and gutter need to be offset from the item width in the grid mixin
+* 
+* TODO: We need to factor for borders in browsers that dont support box-sizing. This is difficult because borders can be specified as a pixel width and our calculations are in percentages. Borders are not allowed to be set as percentage widths.
+*/
 #container {
   max-width: 1300px;
   margin: 0 auto;
@@ -17,17 +34,15 @@ header {
   background-color: black;
 }
 header h1 {
-  /*
--moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; 
-    box-sizing: border-box;
-*/
-
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   overflow: hidden;
   float: left;
   width: 97.91666666666666%;
   margin: 0 1.0416666666666665%;
+  padding: 0 0%;
   padding: 1em 0;
   color: white;
 }
@@ -41,17 +56,15 @@ article {
   margin-top: 10px;
 }
 article section {
-  /*
--moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; 
-    box-sizing: border-box;
-*/
-
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   overflow: hidden;
   float: left;
   width: 64.58333333333334%;
   margin: 0 1.0416666666666665%;
+  padding: 0 0%;
 }
 article section ul.boxes {
   display: block;
@@ -63,34 +76,35 @@ article section ul.boxes {
   padding: 0;
 }
 article section ul.boxes li {
-  /*
--moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; 
-    box-sizing: border-box;
-*/
-
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   overflow: hidden;
   float: left;
   width: 21.875%;
   margin: 0 1.5625%;
+  padding: 0 0%;
+  border: 5px solid #ccc;
+  /*In browsers that support box-sizing, you can add borders directly onto the grid item, allowing for cleaner markup*/
+
+  padding: 10px;
+  /*In browsers that support box-sizing, you can add padding directly onto the grid item, allowing for cleaner markup*/
+
   list-style: none outside none;
   text-align: center;
-  padding: 10px 0;
   background-color: #e9e9e9;
 }
 article aside {
-  /*
--moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; 
-    box-sizing: border-box;
-*/
-
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   overflow: hidden;
   float: left;
   width: 31.25%;
   margin: 0 1.0416666666666665%;
+  padding: 0 0%;
   background-color: #e9e9e9;
 }
 footer {
@@ -103,16 +117,14 @@ footer {
   margin-top: 20px;
 }
 footer div {
-  /*
--moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; 
-    box-sizing: border-box;
-*/
-
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   overflow: hidden;
   float: left;
   width: 22.916666666666664%;
   margin: 0 1.0416666666666665%;
+  padding: 0 0%;
   background-color: #e9e9e9;
 }

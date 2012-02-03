@@ -9,7 +9,15 @@ body {
 	margin: 0;
 }
 
-.row(@columns:@columns) {
+
+/**
+* ROW
+* @columns {int} number of columns in the grid
+* @gutter {int} percentage width of gutters
+* 
+* Now factoring for optional gutter width. Browsers that dont support the box-sizing rule (<=IE7) will need to account for gutters on grid items. The gutter needs to be offset in the row mixin
+*/
+.row(@columns:@columns, @gutter:@gutter-width) {
     
 	@total-width: (@column-width*@columns) + (@gutter-width*@columns);
 
@@ -18,17 +26,26 @@ body {
 	margin: 0 auto;
 	width: 100%;
 	
-	width: ((@gutter-width + @total-width)/@total-width)*100%;
-	margin: 0 ((@gutter-width*.5)/@total-width)*-100%;
+	width: ((@gutter + @total-width)/@total-width)*100%;
+	margin: 0 ((@gutter*.5)/@total-width)*-100%;
 }
 
-.grid(@x,@columns:@columns, @gutter:@gutter-width) {
+/**
+* COLUMN
+* @x {int} number of columns each grid item should take up
+* @columns {int} number of columns in the grid
+* @gutter {int} percentage width of gutters
+* @padding {int} percentage width of left and right padding on grid items
+*
+* Now factoring for optional gutter width and padding. Browsers that dont support the box-sizing rule (<=IE7) will need to account for padding and gutters on grid items. Both padding and gutter need to be offset from the item width in the grid mixin
+* 
+* TODO: We need to factor for borders in browsers that dont support box-sizing. This is difficult because borders can be specified as a pixel width and our calculations are in percentages. Borders are not allowed to be set as percentage widths.
+*/
+.grid(@x,@columns:@columns, @gutter:@gutter-width, @padding:0) {
     
-    /*
--moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box; 
     box-sizing: border-box;
-*/
 		
 	@total-width: (@column-width*@columns) + (@gutter*@columns);
 
@@ -36,26 +53,7 @@ body {
 	overflow: hidden;
 	float: left;
 
-	width: ((((@gutter-width+@column-width)*@x)-@gutter) / @total-width) * 100%;
+	width: ((((@gutter+@column-width)*@x)-(@gutter+@padding*2)) / @total-width) * 100%;
 	margin: 0 ((@gutter*.5)/@total-width)*100%;
-}
-
-/* !Modified - added the gutter param so that you can override this mixin and specify a gutter for each set of columns. Also added padding param so you can factor for columns with padding */
-.grid-2(@x,@columns:@columns, @gutter:@gutter-width, @padding:0) {
-
-    @total-width: (@column-width*@columns) + (@gutter*@columns);
-
-	display: inline;
-	overflow: hidden;
-	float: left;
-	
-	width: ((((@gutter-width+@column-width)*@x)-@gutter-width) / @total-width) * 100%;
-	margin: 0 ((@gutter-width*.5)/@total-width)*100%;
-	
-	/* width: @total-width*((((@gutter-width+@column-width)*@x)-(@gutter+@padding*2)) / @_gridsystem-width); */
-	/*
-width: ((((@gutter-width+@column-width)*@x)-(@gutter+@padding*2)) / @total-width) * 100%;
-	margin: 0 @total-width*((@gutter*.5)/@total-width);
-*/
-	/* padding: @total-width*((@padding)/@_gridsystem-width); */
+	padding: 0 ((@padding)/@total-width)*100%;
 }
